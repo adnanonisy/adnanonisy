@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/anton.css">
+<style>
+  :root{--paper:#f4efe4;--navy:#1f2a44;--orange:#e0701f;--red:#c8202f;--pink:#f29ab0;--olive:#6b6a22;--lime:#e3ee57;--ink:#1d2433}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+  #stage{position:relative;width:1920px;height:1080px;overflow:hidden}
+  .layer{position:absolute;inset:0;overflow:hidden}
+  .abs{position:absolute;left:0;top:0}
+  .paper{background:
+      radial-gradient(ellipse at 50% 45%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+      repeating-linear-gradient(to bottom, transparent 0 53px, rgba(120,150,190,.13) 53px 55px), var(--paper)}
+  .anton{font-family:'Anton',sans-serif;line-height:1;white-space:nowrap}
+  .lz{font-family:'Lalezar',sans-serif;line-height:1.3;white-space:nowrap;direction:rtl}
+  .cairo{font-family:'Cairo',sans-serif;white-space:nowrap;direction:rtl}
+  .mask{position:absolute;left:0;top:0;overflow:hidden;padding:4px 14px 10px}
+  .mask .in{display:block;will-change:transform}
+  .slab{position:absolute;left:0;top:0}
+  .book{position:absolute;left:0;top:0;height:560px;z-index:15;transform-origin:50% 50%}
+  .marquee{position:absolute;left:0;top:0;font-family:'Anton';font-size:420px;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.22)}
+  .idx{position:absolute;font-family:'Anton';font-size:44px;letter-spacing:4px;white-space:nowrap}
+  #grain{position:absolute;inset:-50%;background:url(img/grain.png);opacity:.07;mix-blend-mode:overlay;z-index:100;pointer-events:none}
+  #vig{position:absolute;inset:0;z-index:99;background:radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.22) 100%);pointer-events:none}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1 -->
+  <div class="layer paper" id="L1" style="z-index:1">
+    <div class="abs" id="cam1" style="width:1920px;height:1080px;transform-origin:0 0">
+      <div class="slab" id="sl0" style="background:var(--orange)"></div>
+      <div class="slab" id="sl1" style="background:var(--red)"></div>
+      <div class="slab" id="sl2" style="background:var(--olive)"></div>
+      <div class="mask" id="w0"><span class="in anton" style="font-size:250px;color:var(--navy)">HIGH</span></div>
+      <div class="mask" id="w1"><span class="in anton" style="font-size:250px;color:var(--navy)">N<span id="oh">O</span>TE</span></div>
+      <div class="mask" id="w2"><span class="in anton" style="font-size:250px;color:var(--navy)">JORDAN</span></div>
+      <div class="mask" id="s1sub"><span class="in lz" style="font-size:54px;color:var(--navy)">الإنجليزي المتقدم · توجيهي 12</span></div>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="layer" id="L2" style="z-index:2;background:radial-gradient(ellipse at 50% 55%, #2d3b5e 0%, #1f2a44 55%, #141b2e 100%)">
+    <div id="dust"></div>
+    <div class="abs" id="floor" style="width:1300px;height:160px;border-radius:50%;background:radial-gradient(ellipse, rgba(0,0,0,.45), rgba(0,0,0,0) 70%)"></div>
+  </div>
+  <div class="mask" id="s2t" style="z-index:16"><span class="in lz" style="font-size:120px;color:#fff">الباقة الكاملة</span></div>
+  <div class="abs anton" id="s2b" style="z-index:16;font-size:54px;color:var(--lime)">HIGH NOTE JORDAN</div>
+
+  <!-- S3 panels (built in JS) -->
+  <div id="panels"></div>
+
+  <!-- S4 -->
+  <div class="layer" id="L4lead" style="z-index:19;background:var(--navy)"></div>
+  <div class="layer" id="L4" style="z-index:20;background:var(--lime)">
+    <div class="abs" id="cam4" style="width:1920px;height:1080px">
+      <div class="slab" id="u0" style="background:var(--orange)"></div>
+      <div class="slab" id="u1" style="background:var(--pink)"></div>
+      <div class="slab" id="u2" style="background:var(--red)"></div>
+      <div class="mask" id="k0"><span class="in lz" style="font-size:190px;color:var(--navy)">كل درس.</span></div>
+      <div class="mask" id="k1"><span class="in lz" style="font-size:190px;color:var(--navy)">كل مهمة.</span></div>
+      <div class="mask" id="k2"><span class="in lz" style="font-size:190px;color:var(--navy)">كل علامة.</span></div>
+      <div class="abs" id="k3" style="font:600 64px 'Caveat';color:var(--navy);white-space:nowrap">Every lesson, Every task, Every mark.</div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="layer paper" id="L5" style="z-index:30">
+    <div id="burst"></div>
+  </div>
+  <div class="abs anton" id="s5k" style="z-index:40;font-size:46px;color:var(--red)">HIGH NOTE JORDAN</div>
+  <div class="abs" id="s5name" style="z-index:40">
+    <div class="slab" id="s5bar" style="background:var(--lime);left:-20px;right:-20px;top:48%;bottom:4%;transform-origin:right center;border-radius:4px 12px 6px 14px"></div>
+    <span class="lz" style="position:relative;font-size:140px;color:var(--navy)">مس آلاء الشريف</span>
+  </div>
+  <div class="mask" id="s5l" style="z-index:40"><span class="in cairo" style="font-size:46px;font-weight:800;color:var(--navy)">الإنجليزي المتقدم · توجيهي 12</span></div>
+
+  <img class="book" id="b0" src="img/full.png">
+  <img class="book" id="b1" src="img/qbank.png">
+  <img class="book" id="b2" src="img/meanings.png">
+  <img class="book" id="b3" src="img/paragraphs.png">
+
+  <div id="vig"></div>
+  <div id="grain"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const E={
+  lin:x=>x, out:x=>1-Math.pow(1-x,3), in:x=>x*x*x, io:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+  expoIn:x=>x===0?0:Math.pow(2,10*x-10), expoOut:x=>x===1?1:1-Math.pow(2,-10*x),
+  back:x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)},
+  quint:x=>1-Math.pow(1-x,5),
+};
+function place(el,x,y,{o=1,s=1,r=0,anchor='c',extra=''}={}){
+  const w=el.offsetWidth,h=el.offsetHeight; const left=anchor==='r'?x-w:anchor==='l'?x:x-w/2;
+  el.style.transform=`translate(${left}px,${y-h/2}px) rotate(${r}deg) scale(${s}) ${extra}`; el.style.opacity=o;
+}
+function reveal(m,p,dir=1){ m.querySelector('.in').style.transform=`translateY(${(1-p)*115*dir}%)`; }
+function show(el,v){ el.style.visibility=v?'visible':'hidden'; }
+function shake(t,hits,amp=14,dur=.3){ let x=0,y=0; for(const h of hits){ const k=seg(t,h,h+dur); if(t>=h&&k<1){ const d=Math.pow(1-k,2)*amp; x+=Math.sin(t*93+h*7)*d; y+=Math.cos(t*71+h*3)*d; } } return [x,y]; }
+// deterministic pseudo random
+const rnd=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+
+// ---------- S3 panels ----------
+const CUTS=[
+  {c:'#e0701f',label:'الكتاب كامل',sub:'من أول كلمة… لآخر سؤال وزاري',mq:'COMPLETE BOOK  COMPLETE BOOK',lc:'#fff',sc:'#2a1406',side:1},
+  {c:'#c8202f',label:'بنك الأسئلة',sub:'',mq:'QUESTION BANK  QUESTION BANK',lc:'#fff',sc:'#fff',side:-1,counter:true},
+  {c:'#f29ab0',label:'دوسية المعاني',sub:'meanings notes',mq:'MEANINGS  MEANINGS  MEANINGS',lc:'#1f2a44',sc:'#8a1f45',side:1,latin:true},
+  {c:'#6b6a22',label:'ملخصات الفقرات',sub:'A GOOD PARAGRAPH',mq:'PARAGRAPHS  PARAGRAPHS',lc:'#f4efe4',sc:'#e3ee57',side:-1,latin:true},
+];
+const T0=4.52, CD=1.25;
+const P=CUTS.map((c,k)=>{
+  const lead=document.createElement('div'); lead.className='layer'; lead.style.zIndex=3+k*2; lead.style.background=k%2?'#e3ee57':'#f4efe4';
+  const p=document.createElement('div'); p.className='layer'; p.style.zIndex=4+k*2; p.style.background=c.c;
+  p.innerHTML=`<div class="marquee">${c.mq}</div>
+    <div class="idx" style="color:${c.lc}">0${k+1}<span style="opacity:.5"> / 04</span></div>
+    <div class="mask lbl"><span class="in lz" style="font-size:${c.counter?110:150}px;color:${c.lc}">${c.label}</span></div>
+    ${c.counter?`<div class="abs cnt" style="display:flex;align-items:baseline;gap:28px;direction:rtl"><span class="lz" style="font-size:150px;color:#fff">سؤال</span><span class="anton num" style="font-size:300px;color:#fff;min-width:560px;text-align:center">1474</span></div>`:''}
+    ${c.sub?`<div class="mask sub"><span class="in ${c.latin?'':'cairo'}" style="${c.latin?"font:600 70px 'Caveat';white-space:nowrap":'font-size:50px;font-weight:700'};color:${c.sc}">${c.sub}</span></div>`:''}`;
+  $('panels').append(lead,p); return {lead,p,c};
+});
+function wipeClip(el,p){ const e=lerp(2240,-330,p); el.style.clipPath=`polygon(${e+320}px 0, 2400px 0, 2400px 1080px, ${e-320}px 1080px)`; }
+
+// ---------- dust & burst ----------
+const dust=[...Array(40)].map((_,i)=>{const d=document.createElement('div');d.className='abs';const s=2+rnd(i)*5;
+  d.style.cssText+=`width:${s}px;height:${s}px;border-radius:50%;background:rgba(255,255,255,${.15+rnd(i+9)*.35})`;$('dust').appendChild(d);return d;});
+const COLS=['#e0701f','#c8202f','#f29ab0','#6b6a22','#e3ee57','#6fbebe'];
+const burst=[...Array(46)].map((_,i)=>{const d=document.createElement('div');d.className='abs';const s=10+rnd(i+3)*16;
+  const shape=i%3; d.style.cssText+=`width:${s}px;height:${shape===1?s*.4:s}px;border-radius:${shape===0?'50%':'3px'};background:${COLS[i%COLS.length]}`;$('burst').appendChild(d);return d;});
+
+// ---------- books ----------
+const BK=[$('b0'),$('b1'),$('b2'),$('b3')];
+const H=560;
+function drawBook(el,{x,y,s=1,r=0,ry=0,o=1,z=15,br=1}){
+  const w=el.naturalWidth*H/el.naturalHeight;
+  el.style.transform=`translate(${x-w/2}px,${y-H/2}px) perspective(1600px) rotateY(${ry}deg) rotate(${r}deg) scale(${s})`;
+  el.style.opacity=o; el.style.zIndex=z;
+  el.style.filter=`brightness(${br}) drop-shadow(0 30px 34px rgba(0,0,0,.35)) drop-shadow(0 4px 6px rgba(0,0,0,.2))`;
+}
+const S3POS=k=>({x:CUTS[k].side>0?1400:520,y:560,s:1.42});
+
+function books(t){
+  BK.forEach((el,i)=>{
+    let v=null;
+    if(t>=2.02&&t<4.6){ // carousel
+      const R0=E.back(seg(t,2.02,2.6))*560; const out=E.in(seg(t,4.22,4.5));
+      const phi=720*E.quint(seg(t,2.02,4.25))+i*90; const a=phi*Math.PI/180;
+      const zz=Math.cos(a), R=R0*(i===0?1:1+out*1.6);
+      let p={x:960+Math.sin(a)*R, y:560-(1-zz)*38, s:(.58+.42*(zz+1)/2)*E.out(seg(t,2.02,2.4)), ry:-Math.sin(a)*32, r:0, z:Math.round(15+zz*3), br:.55+.45*(zz+1)/2, o:i===0?1:1-out};
+      if(i===0){ const m=E.io(seg(t,4.2,4.55)); const q=S3POS(0); p={...p,x:lerp(p.x,q.x,m),y:lerp(p.y,q.y,m),s:lerp(p.s,q.s,m),ry:lerp(p.ry,0,m),br:lerp(p.br,1,m),z:18}; }
+      v=p;
+    }
+    if(t>=4.55&&t<9.7){ // cuts: book i belongs to cut i
+      const T=T0+i*CD, q=S3POS(i), sd=CUTS[i].side;
+      if(t>=T-0.05&&t<T+CD+0.3){
+        const ein=i===0?1:E.back(seg(t,T,T+0.4)); const eo=E.in(seg(t,T+CD-0.1,T+CD+0.22));
+        const drift=(t-T);
+        v={x:q.x+(1-ein)*sd*1300 - eo*sd*1500 - drift*sd*26, y:q.y-drift*8, s:q.s+drift*.05, r:(1-ein)*sd*14+eo*-sd*10+sd*2, ry:0, z:18, br:1, o:1};
+      }
+    }
+    if(t>=12.02){ // lockup fan; order back->front: 3,2,0,1
+      const ord=[2,3,1,0][i]; const j=ord; // j position 0..3 left->right
+      const corners=[[-500,-400],[2400,-500],[-500,1500],[2400,1500]];
+      const st=12.06+j*0.07; const e=E.back(seg(t,st,st+0.6)); const push=(t-12.02)*.012;
+      const fx=960+(j-1.5)*170, fy=410+Math.abs(j-1.5)*22, fr=(j-1.5)*9;
+      const c=corners[i];
+      v={x:lerp(c[0],fx,e), y:lerp(c[1],fy,e), s:0.86+push, r:lerp(fr+(i%2?40:-40),fr,e), ry:0, z:34+j, br:1, o:t<st?0:1};
+    }
+    show(el,!!v); if(v) drawBook(el,v);
+  });
+}
+
+// ---------- render ----------
+window.render=function(t){
+  // layer visibility
+  show($('L1'),t<2.1); show($('L2'),t>=1.95&&t<4.9); show($('L4'),t>=9.3&&t<12.2); show($('L4lead'),t>=9.3&&t<12.2);
+  show($('L5'),t>=11.6);
+  $('grain').style.transform=`translate(${Math.floor(rnd(Math.floor(t*30))*400)-200}px,${Math.floor(rnd(Math.floor(t*30)+5)*400)-200}px)`;
+
+  // ---- S1 ----
+  if(t<2.1){
+    const hits=[0.02,0.52,1.02]; const [sx,sy]=shake(t,hits.map(h=>h+.2),10);
+    const ys=[250,530,810];
+    [0,1,2].forEach(i=>{
+      const h=hits[i], w=$('w'+i), sl=$('sl'+i);
+      const ww=w.offsetWidth, wh=w.offsetHeight;
+      place(w,960,ys[i]); reveal(w,t>=h+.16?1:0,1);
+      // block reveal: grow from left, then retract to right
+      const g=E.expoOut(seg(t,h,h+.17)), r=E.expoIn(seg(t,h+.17,h+.38));
+      const left=960-ww/2, width=ww;
+      sl.style.width=width+'px'; sl.style.height=(wh-20)+'px';
+      sl.style.transformOrigin=r>0?'right':'left';
+      sl.style.transform=`translate(${left}px,${ys[i]-wh/2+8}px) scaleX(${r>0?1-r:g})`;
+    });
+    // subtitle
+    const sb=$('s1sub'); place(sb,960,1000); reveal(sb,E.quint(seg(t,1.2,1.5)));
+    // zoom through O stroke
+    const z=E.expoIn(seg(t,1.55,2.02)); const S=1+z*90;
+    const o=$('oh').getBoundingClientRect(); // measure unscaled once
+    if(!window._O && t>1.2){ window._O={x:o.left+o.width*0.14,y:o.top+o.height*.5}; }
+    const fx=window._O?window._O.x:960, fy=window._O?window._O.y:540;
+    $('cam1').style.transform=`translate(${sx*(1-z)}px,${sy*(1-z)}px) translate(${fx}px,${fy}px) scale(${S}) translate(${-fx}px,${-fy}px)`;
+  }
+
+  // ---- S2 ----
+  {
+    const on=t>=2.02&&t<4.55; show($('s2t'),on); show($('s2b'),on);
+    const out=E.in(seg(t,4.2,4.45));
+    place($('s2t'),960,140,{o:1-out,s:1+out*.2}); reveal($('s2t'),E.quint(seg(t,2.35,2.75)));
+    const tr=E.quint(seg(t,2.5,3.4)); $('s2b').style.letterSpacing=lerp(80,22,tr)+'px';
+    place($('s2b'),960,975,{o:clamp(tr*2)*(1-out)});
+    place($('floor'),960,820,{s:E.out(seg(t,2.1,2.6))});
+    dust.forEach((d,i)=>{const sp=20+rnd(i+1)*60; const x=(rnd(i+2)*2100 + (t-2)*sp*(rnd(i+4)>.5?1:-1))%2100-90; const y=rnd(i+3)*1080 - (t-2)*sp*.4;
+      d.style.transform=`translate(${x}px,${((y%1080)+1080)%1080}px)`;});
+  }
+
+  // ---- S3 ----
+  P.forEach(({lead,p,c},k)=>{
+    const T=T0+k*CD; const on=t>=T-0.3&&t<T+CD+0.5&&t<9.95; show(lead,on); show(p,on);
+    if(!on) return;
+    wipeClip(lead,E.io(seg(t,T-0.26,T+0.1))); wipeClip(p,E.io(seg(t,T-0.16,T+0.18)));
+    const sd=c.side; const tx=sd>0?690:1260; // text anchor opposite the book
+    const mq=p.querySelector('.marquee'); mq.style.transform=`translate(${-600+(t-T)*sd*-260 - (1-E.expoOut(seg(t,T-0.1,T+0.5)))*sd*500}px,${330}px)`;
+    const idx=p.querySelector('.idx'); place(idx,sd>0?80:1840,80,{anchor:sd>0?'l':'r',o:seg(t,T,T+.2)});
+    const lbl=p.querySelector('.lbl');
+    if(c.counter){
+      const cnt=p.querySelector('.cnt'); const n=Math.round(1474*E.quint(seg(t,T+0.05,T+0.7)));
+      cnt.querySelector('.num').textContent=n; const pop=t>T+0.7?1+.08*Math.pow(1-seg(t,T+.7,T+.9),2):1;
+      place(cnt,tx,470,{s:pop*lerp(.8,1,E.back(seg(t,T,T+.3))),o:seg(t,T,T+.12)});
+      place(lbl,tx,760); reveal(lbl,E.quint(seg(t,T+0.3,T+0.6)));
+    } else {
+      place(lbl,tx,470); reveal(lbl,E.quint(seg(t,T+0.08,T+0.42)));
+    }
+    const sub=p.querySelector('.sub'); if(sub){ place(sub,tx,640); reveal(sub,E.quint(seg(t,T+0.25,T+0.55))); }
+  });
+
+  // ---- S4 ----
+  if(t>=9.3&&t<12.2){
+    wipeClip($('L4lead'),E.io(seg(t,9.2,9.5))); wipeClip($('L4'),E.io(seg(t,9.3,9.6)));
+    const hits=[9.52,10.02,10.52]; const [sx,sy]=shake(t,hits,16,.28);
+    const ys=[250,500,750];
+    hits.forEach((h,i)=>{
+      const m=$('k'+i), u=$('u'+i); const e=E.expoOut(seg(t,h,h+.25));
+      place(m,960,ys[i],{s:lerp(1.5,1,e),o:t>=h?1:0}); reveal(m,t>=h?1:0);
+      const uw=m.offsetWidth-20; u.style.width=uw+'px'; u.style.height='26px'; u.style.transformOrigin='right';
+      u.style.transform=`translate(${960-uw/2}px,${ys[i]+78}px) scaleX(${E.expoOut(seg(t,h+.1,h+.4))})`;
+    });
+    place($('k3'),960,960,{o:1,r:-2,extra:''}); $('k3').style.clipPath=`inset(0 ${(1-E.io(seg(t,10.9,11.5)))*100}% 0 0)`;
+    $('cam4').style.transform=`translate(${sx}px,${sy}px) scale(${1+(t-9.5)*.015})`;
+  }
+
+  // ---- S5 ----
+  {
+    const ir=E.io(seg(t,11.7,12.08))*1150; $('L5').style.clipPath=`circle(${ir}px at 960px 540px)`;
+    const on=t>=12.02; show($('s5k'),on); show($('s5name'),on); show($('s5l'),on);
+    const push=1+(t-12.02)*.012;
+    const k=E.quint(seg(t,12.45,13.0)); $('s5k').style.letterSpacing=lerp(60,16,k)+'px'; place($('s5k'),960,735,{o:clamp(k*2),s:push});
+    const nm=E.back(seg(t,12.6,13.0)); place($('s5name'),960,855,{s:lerp(.6,1,nm)*push,o:clamp(nm*3)});
+    $('s5bar').style.transform=`scaleX(${E.expoOut(seg(t,12.85,13.25))})`;
+    place($('s5l'),960,975,{s:push}); reveal($('s5l'),E.quint(seg(t,13.05,13.4)));
+    burst.forEach((d,i)=>{const b=seg(t,12.12,13.6); const a=rnd(i+20)*Math.PI*2, sp=500+rnd(i+30)*700;
+      const e=E.expoOut(b); const x=960+Math.cos(a)*sp*e, y=420+Math.sin(a)*sp*e*.75 + b*b*220;
+      d.style.transform=`translate(${x}px,${y}px) rotate(${rnd(i)*360+b*400}deg) scale(${1-E.in(b)})`; d.style.opacity=t<12.12?0:1;});
+  }
+
+  books(t);
+};
+window.ready=(async()=>{await document.fonts.ready; await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r))); render(0); return true;})();
+</script>
+</body>
+</html>
