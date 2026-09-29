@@ -6,7 +6,7 @@ const path=require('path'), fs=require('fs');
   const page=await browser.newPage({viewport:{width:1920,height:1080}});
   await page.goto('file://'+path.resolve('site/index.html')); await page.evaluate(()=>window.ready);
   await page.evaluate(()=>render(1.3));
-  for(let f=a; f<b; f++){ const p=`frames/f${String(f).padStart(4,'0')}.png`; if(f<150&&fs.existsSync(p)) continue;
+  for(let f=a; f<b; f++){ const p=`frames/f${String(f).padStart(4,'0')}.png`; 
     await page.evaluate(t=>render(t),f/fps); await page.screenshot({path:p}); }
   await browser.close();
 })();
