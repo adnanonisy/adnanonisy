@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="fonts/more.css">
+<style>
+  :root{--ink:#20243a;--maroon:#a8322a;--lime:#e4ee5c;--paper:#f0ebe1}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
+  #stage{position:relative;width:1920px;height:1080px;overflow:hidden;
+    background:
+      radial-gradient(ellipse at 45% 45%, rgba(255,255,255,.55), rgba(255,255,255,0) 65%),
+      radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(90,70,40,.10) 100%),
+      repeating-linear-gradient(to bottom, transparent 0 46px, rgba(150,160,190,.10) 46px 48px),
+      var(--paper)}
+  #margin{position:absolute;top:0;bottom:0;left:1774px;width:2px;background:rgba(205,95,95,.45)}
+  .abs{position:absolute;left:0;top:0}
+  .rb{font-family:'Rubik',sans-serif;white-space:nowrap;direction:rtl}
+  .bar{position:absolute;left:0;top:0;transform-origin:right center;
+    background:repeating-linear-gradient(to bottom,#e2ec55 0 7px,#ecf27c 7px 10px,#e2ec55 10px 16px)}
+  .hl{position:absolute;left:0;top:0}
+  .hl .bar{left:-16px;right:-16px;top:50%;bottom:-2px;width:auto}
+  .hl .tx{position:relative;display:block}
+  .book{position:absolute;left:0;top:0;height:560px;filter:drop-shadow(0 22px 26px rgba(60,45,25,.28)) drop-shadow(0 3px 5px rgba(60,45,25,.18))}
+  #lime{position:absolute;inset:0;z-index:60;background:repeating-linear-gradient(to bottom,#e1eb52 0 10px,#e9f070 10px 14px,#e1eb52 14px 26px)}
+  #pen{z-index:70}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="margin"></div>
+
+  <!-- S1 / S2 title -->
+  <div class="hl" id="title"><div class="bar" id="titlebar"></div><span class="tx rb" style="font-size:108px;font-weight:900;color:var(--ink)">الإنجليزي المتقدم</span></div>
+  <div id="labels"></div>
+
+  <!-- taglines -->
+  <div class="bar" id="tagbar" style="width:820px;height:56px"></div>
+  <div class="abs rb" id="tg0" style="font-size:150px;font-weight:900;color:var(--ink)">كل درس.</div>
+  <div class="abs rb" id="tg1" style="font-size:150px;font-weight:900;color:var(--ink)">كل مهمة.</div>
+  <div class="abs rb" id="tg2" style="font-size:150px;font-weight:900;color:var(--ink)">كل علامة.</div>
+
+  <!-- stamp -->
+  <div class="abs" id="stamp" style="padding:14px;border:5px solid var(--maroon);border-radius:22px;opacity:.95">
+    <div style="position:relative;border:9px solid var(--maroon);border-radius:14px;padding:18px 70px 26px;display:flex;align-items:center;gap:26px;direction:rtl;color:var(--maroon)">
+      <span style="position:absolute;right:22px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--maroon)"></span>
+      <span style="position:absolute;left:22px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--maroon)"></span>
+      <span class="rb" id="num" style="font-size:112px;font-weight:800;min-width:290px;text-align:center;direction:ltr">1474</span>
+      <span class="rb" style="font-size:112px;font-weight:800">سؤال</span>
+    </div>
+  </div>
+  <div class="abs rb" id="stampsub" style="font-size:40px;font-weight:700;color:var(--ink)">بنك أسئلة شامل للفصل الأول</div>
+
+  <!-- lockup text -->
+  <div class="abs" id="lk" style="font:500 27px 'Rubik';letter-spacing:9px;color:var(--maroon);white-space:nowrap">HIGH NOTE JORDAN</div>
+  <div class="hl" id="nm"><div class="bar" id="nmbar"></div><span class="tx rb" id="nmtx" style="font-size:124px;font-weight:900;color:var(--ink)">مس آلاء الشريف</span></div>
+  <div class="abs rb" id="l1" style="font-size:50px;font-weight:700;color:var(--maroon)">الإنجليزي المتقدم · توجيهي 12</div>
+  <div class="abs rb" id="l2" style="font-size:40px;font-weight:400;color:#6a6a70">من أول كلمة لآخر سؤال وزاري</div>
+  <div class="abs" id="pill" style="background:#22263a;border-radius:60px;padding:10px 36px 12px 12px;display:flex;align-items:center;gap:20px;direction:rtl;box-shadow:0 8px 18px rgba(34,38,58,.22)">
+    <span style="width:60px;height:60px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center">
+      <svg width="30" height="36" viewBox="0 0 30 36"><rect x="6" y="2" width="18" height="32" rx="4" fill="none" stroke="#22263a" stroke-width="3.4"/><line x1="12" y1="28" x2="18" y2="28" stroke="#22263a" stroke-width="3" stroke-linecap="round"/></svg>
+    </span>
+    <span class="rb" style="font-size:38px;font-weight:700;color:#fff">للطلب</span>
+    <span dir="ltr" style="font:700 46px 'Rubik';color:#fff;letter-spacing:1px">0780069629</span>
+  </div>
+  <div class="abs" id="note" style="width:250px;height:250px;background:#f7e55c;box-shadow:0 14px 22px rgba(80,60,0,.25),0 2px 3px rgba(80,60,0,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;direction:rtl">
+    <span class="rb" style="font-size:36px;font-weight:700;color:var(--ink)">الباقة كاملة</span>
+    <span class="rb" style="font-size:78px;font-weight:900;color:var(--maroon);line-height:1.05">15 دينار</span>
+  </div>
+  <div id="stars"></div>
+
+  <!-- end -->
+  <svg class="abs" id="bell" width="260" height="230" viewBox="0 0 260 230" style="overflow:visible">
+    <g id="rings" stroke="#a8322a" stroke-width="6" stroke-linecap="round">
+      <line x1="42" y1="30" x2="72" y2="52"/><line x1="18" y1="92" x2="54" y2="98"/>
+      <line x1="218" y1="30" x2="188" y2="52"/><line x1="242" y1="92" x2="206" y2="98"/>
+    </g>
+    <g id="bellbody">
+      <circle cx="130" cy="44" r="12" fill="#22263a"/>
+      <path d="M130 50 C 92 52, 80 88, 80 128 C 80 150, 72 162, 60 176 L 200 176 C 188 162, 180 150, 180 128 C 180 88, 168 52, 130 50 Z" fill="#22263a"/>
+      <circle cx="130" cy="192" r="15" fill="#a8322a"/>
+    </g>
+  </svg>
+  <div class="hl" id="endt"><div class="bar" id="endbar"></div><span class="tx rb" style="font-size:150px;font-weight:900;color:var(--ink)">بداية الحصة</span></div>
+  <div class="abs rb" id="ends" style="font-size:42px;font-weight:700;color:var(--maroon)">الإنجليزي المتقدم · مس آلاء الشريف</div>
+
+  <img class="book" id="b-paragraphs" src="img/paragraphs.png">
+  <img class="book" id="b-meanings" src="img/meanings.png">
+  <img class="book" id="b-full" src="img/full.png">
+  <img class="book" id="b-qbank" src="img/qbank.png">
+
+  <div id="lime"></div>
+  <!-- highlighter pen: tip at (0,0) of the group -->
+  <svg class="abs" id="pen" width="520" height="160" viewBox="-20 -80 520 160" style="overflow:visible">
+    <defs>
+      <linearGradient id="pb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4f98a"/><stop offset=".45" stop-color="#bff04a"/><stop offset="1" stop-color="#94c72a"/></linearGradient>
+      <linearGradient id="pc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d3f36a"/><stop offset="1" stop-color="#86b820"/></linearGradient>
+    </defs>
+    <g id="pg">
+      <path d="M0 0 L22 -18 L40 -18 L40 18 L22 18 Z" fill="#c9e64a" stroke="#86ad23" stroke-width="2"/>
+      <rect x="38" y="-30" width="70" height="60" rx="8" fill="url(#pc)"/>
+      <rect x="104" y="-36" width="330" height="72" rx="14" fill="url(#pb)"/>
+      <rect x="120" y="-26" width="250" height="12" rx="6" fill="rgba(255,255,255,.45)"/>
+      <rect x="180" y="-12" width="160" height="30" rx="4" fill="rgba(255,255,255,.28)" stroke="rgba(120,160,40,.5)" stroke-width="2"/>
+      <rect x="430" y="-30" width="30" height="60" rx="8" fill="#9fcf33"/>
+    </g>
+  </svg>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const E={lin:x=>x,out:x=>1-Math.pow(1-x,3),in:x=>x*x*x,io:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+  back:x=>{const c1=1.3,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)},quint:x=>1-Math.pow(1-x,5)};
+const rnd=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+
+// torn-edge clip for highlight bars
+function torn(seed){ const pts=[]; const n=34;
+  for(let i=0;i<=n;i++) pts.push(`${(i/n*100).toFixed(2)}% ${(rnd(seed+i)*14).toFixed(1)}%`);
+  for(let i=n;i>=0;i--) pts.push(`${(i/n*100).toFixed(2)}% ${(100-rnd(seed+i+99)*14).toFixed(1)}%`);
+  return `polygon(${pts.join(',')})`; }
+document.querySelectorAll('.bar').forEach((b,i)=>b.style.clipPath=torn(i*50+3));
+
+function place(el,x,y,{o=1,s=1,r=0,anchor='c',extra=''}={}){
+  const w=el.offsetWidth??+el.getAttribute('width'),h=el.offsetHeight??+el.getAttribute('height');
+  const left=anchor==='r'?x-w:anchor==='l'?x:x-w/2;
+  el.style.transform=`translate(${left}px,${y-h/2}px) ${extra} rotate(${r}deg) scale(${s})`; el.style.opacity=o;
+}
+const barP=(el,p)=>el.style.transform=`scaleX(${clamp(p)})`;
+
+// labels
+const LBL=[['qbank','بنك الأسئلة',1580,2.45],['full','الكتاب كامل',1170,2.7],['meanings','دوسية المعاني',760,2.95],['paragraphs','ملخصات الفقرات',330,3.2]];
+const labels=LBL.map(([k,t],i)=>{const d=document.createElement('div');d.className='hl';d.innerHTML=`<div class="bar"></div><span class="tx rb" style="font-size:42px;font-weight:700;color:var(--ink)">${t}</span>`;
+  d.querySelector('.bar').style.clipPath=torn(700+i*40); $('labels').appendChild(d); return d;});
+
+// stars
+const STARS=[[1010,352,'#20243a',46,11.0],[1000,640,'#e0701f',34,12.55],[1862,690,'#e86a9a',34,12.65],[1812,930,'#3fb0b8',34,12.75],[1905,200,'#e86a9a',26,12.85]];
+const stars=STARS.map(([x,y,c,s])=>{const e=document.createElementNS('http://www.w3.org/2000/svg','svg');e.setAttribute('width',s);e.setAttribute('height',s);e.setAttribute('viewBox','0 0 70 70');e.classList.add('abs');
+  e.innerHTML=`<path d="M35 4 L43 26 L66 27 L48 41 L55 64 L35 51 L15 64 L22 41 L4 27 L27 26 Z" fill="none" stroke="${c}" stroke-width="6" stroke-linejoin="round"/>`;$('stars').appendChild(e);return e;});
+
+// books
+const H=560;
+const BK={qbank:$('b-qbank'),full:$('b-full'),meanings:$('b-meanings'),paragraphs:$('b-paragraphs')};
+function drawBook(el,p){ if(!p){el.style.visibility='hidden';return;} el.style.visibility='visible';
+  const w=el.naturalWidth*H/el.naturalHeight;
+  el.style.transform=`translate(${p.x-w/2}px,${p.y-H/2}px) perspective(1800px) rotateY(${p.ry||0}deg) rotate(${p.r||0}deg) scale(${p.s||1})`;
+  el.style.opacity=p.o??1; el.style.zIndex=p.z||10; }
+const REVEAL={qbank:[1580,2.45],full:[1170,2.7],meanings:[760,2.95],paragraphs:[330,3.2]};
+const OUTORD={paragraphs:0,meanings:1,full:2,qbank:3};
+const TAG={full:[5.7,6.5],paragraphs:[6.7,7.5],meanings:[7.7,8.6],qbank:[8.85,9.95]};
+const STACK={paragraphs:[-112,-14,-13,10.0],meanings:[-78,-8,-8,10.12],full:[-42,-2,-3,10.24],qbank:[0,8,7,10.36]};
+function bookPose(k,t){
+  if(t>=16.55) return null;
+  // reveal row
+  const [rx,t0]=REVEAL[k];
+  if(t>=t0&&t<5.75){ const e=E.back(seg(t,t0,t0+.45)); const oo=5.2+OUTORD[k]*.08; const f=E.in(seg(t,oo,oo+.2));
+    if(f>=1) return null;
+    return {x:lerp(2350,rx,e),y:lerp(760,540,e),r:lerp(28,[2,-1,1,-2][OUTORD[k]],e),s:1.02,ry:f*90,z:10}; }
+  // tagline hero
+  const [a,b]=TAG[k];
+  if(t>=a&&t<b+.22){ const fin=E.out(seg(t,a,a+.28)); const fout=E.in(seg(t,b,b+.2));
+    if(t>=b+.2) return null;
+    const qb=k==='qbank'; return {x:(qb?570:570)+(t-a)*14,y:qb?570:550,s:qb?1.39:1.36,ry:-90*(1-fin)+90*fout,r:qb?-1:1,z:10}; }
+  // stack
+  const [dx,dy,rr,st]=STACK[k];
+  if(t>=st){ const e=E.back(seg(t,st,st+.42)); const fl=Math.sin((t-10)*1.1+st*3)*3;
+    return {x:lerp(-420,470+dx,e),y:lerp(-260,585+dy,e)+fl*(e>=1?1:0),r:lerp(rr-40,rr,e),s:1.32,z:20+Math.round((st-10)*10)}; }
+  return null;
+}
+
+window.render=function(t){
+  // ---- title ----
+  { const ti=$('title'); const tip=lerp(1470,480,E.io(seg(t,0.95,1.6)));
+    const shrink=E.io(seg(t,2.2,2.6)); const tout=seg(t,5.4,5.6);
+    place(ti,960,lerp(515,108,shrink),{s:lerp(1,.56,shrink),o:1-tout});
+    const w=ti.offsetWidth; const left=960-w/2;
+    // reveal text right of the pen tip (in unscaled title coords)
+    const cut=clamp((tip-left)/w,0,1); ti.querySelector('.tx').style.clipPath=t<2?`inset(-20px 0 -20px ${cut*100}%)`:'none';
+    const bw=w+32; const bp=t<0.95?0:clamp((left+w+16-tip)/bw); barP($('titlebar'),t<2?bp:1);
+    ti.style.visibility=t<5.7?'visible':'hidden';
+    // pen
+    const pen=$('pen'); let px,py,pr,po=1;
+    if(t<0.95){ const e=E.out(seg(t,0.2,0.95)); px=lerp(2250,1470,e); py=lerp(-220,560,e); pr=lerp(-60,-32,e); }
+    else if(t<1.6){ px=tip; py=560+Math.sin(t*20)*3; pr=-32; }
+    else if(t<2.2){ const e=E.in(seg(t,1.6,2.0)); px=lerp(480,-600,e); py=lerp(560,-200,e); pr=lerp(-32,-50,e); }
+    else if(t>=16.05&&t<16.75){ const e=E.io(seg(t,16.08,16.5)); const x2=E.in(seg(t,16.5,16.7));
+      px=lerp(2050,40,e)-x2*700; py=610; pr=-28; }
+    else { po=0; px=-900; py=-900; pr=0; }
+    pen.style.transform=`translate(${px}px,${py}px) rotate(${pr}deg) translate(20px,-80px) scale(1.15)`; pen.style.transformOrigin='0 0'; pen.style.opacity=po;
+    // lime wipe (right -> left, trailing the pen)
+    const lx=t>=16.08?lerp(2050,40,E.io(seg(t,16.08,16.5)))-E.in(seg(t,16.5,16.7))*700:2000;
+    const lo=1-seg(t,16.62,16.8);
+    $('lime').style.clipPath=`inset(0 0 0 ${Math.max(0,lx)}px)`; $('lime').style.opacity=(t>=16.08&&t<16.8)?lo:0;
+  }
+  // labels
+  LBL.forEach(([k,,x,t0],i)=>{ const d=labels[i]; const a=seg(t,t0+.28,t0+.5); const oo=5.2+OUTORD[k]*.08; const f=seg(t,oo,oo+.2);
+    place(d,x,880,{o:a*(1-f),extra:`translateY(${(1-E.out(a))*14}px)`}); barP(d.querySelector('.bar'),E.out(seg(t,t0+.35,t0+.6))*(1-f)); });
+
+  // ---- taglines ----
+  { const texts=[['tg0',5.75,6.68],['tg1',6.7,7.68],['tg2',7.7,8.6]];
+    texts.forEach(([id,a,b])=>{ const i=E.out(seg(t,a,a+.25)), o=E.in(seg(t,b,b+.18));
+      place($(id),1360,578,{o:clamp(i*1.2)*(1-o),extra:`translate(${(1-i)*-40}px,${-o*34}px)`}); });
+    const bin=E.out(seg(t,5.9,6.12)), bout=E.in(seg(t,8.6,8.78));
+    $('tagbar').style.transform=`translate(${1420-410}px,${648-28}px) rotate(-1deg) scaleX(${bin*(1-bout)})`; }
+
+  // ---- stamp ----
+  { const a=E.out(seg(t,9.0,9.28)); const o=seg(t,9.92,10.08); const n=Math.round(1474*E.quint(seg(t,9.0,9.72)));
+    $('num').textContent=n; place($('stamp'),1350,520,{s:lerp(1.45,1,a),r:6,o:(t<9?0:lerp(.35,1,a))*(1-o)});
+    const s=seg(t,9.45,9.65); place($('stampsub'),1350,746,{o:s*(1-o),extra:`translateY(${(1-s)*12}px)`}); }
+
+  // ---- lockup ----
+  { const R=1752;
+    const k=seg(t,10.45,10.7); place($('lk'),R,284,{anchor:'r',o:k});
+    const full='مس آلاء الشريف'; const nch=Math.round(full.length*seg(t,10.7,11.2));
+    $('nmtx').textContent=nch>0?full.slice(0,nch):'‏'; const nm=$('nm'); place(nm,R,440,{anchor:'r',o:nch>0?1:0});
+    barP($('nmbar'),E.out(seg(t,11.2,11.42)));
+    const a1=seg(t,11.45,11.68); place($('l1'),R,580,{anchor:'r',o:a1,extra:`translateY(${(1-E.out(a1))*12}px)`});
+    const a2=seg(t,11.7,11.92); place($('l2'),R,660,{anchor:'r',o:a2,extra:`translateY(${(1-E.out(a2))*12}px)`});
+    const p=seg(t,11.95,12.2); place($('pill'),1740,783,{anchor:'r',o:p,s:lerp(.94,1,E.out(p))});
+    const nt=seg(t,12.45,12.65); place($('note'),1010,875,{o:clamp(nt*3),s:t<12.45?0:lerp(1.45,1,E.out(nt)),r:lerp(-14,-5,E.out(nt))});
+    STARS.forEach(([x,y,,s,st],i)=>{ const e=E.back(seg(t,st,st+.3)); const tw=1+.1*Math.sin(t*3.2+i*1.7);
+      place(stars[i],x,y,{s:e*tw,r:(t-st)*25+i*20,o:e>0?1:0}); });
+    const on=t>=10&&t<16.6; ['lk','nm','l1','l2','pill','note','stars'].forEach(id=>$(id).style.visibility=on?'visible':'hidden');
+  }
+
+  // ---- end ----
+  { const on=t>=16.55; ['bell','endt','ends'].forEach(id=>$(id).style.visibility=on?'visible':'hidden');
+    const a=seg(t,16.6,16.9); const sw=Math.sin((t-16.8)*14)*14*Math.exp(-(t-16.8)*2.6)*(t>16.8?1:0);
+    place($('bell'),960,300,{o:a});
+    $('bellbody').setAttribute('transform',`rotate(${sw} 130 44)`);
+    const rg=E.back(seg(t,16.9,17.15)); $('rings').setAttribute('transform',`translate(130 110) scale(${rg}) translate(-130 -110)`); $('rings').style.opacity=rg>0?1:0;
+    place($('endt'),960,592,{o:a}); barP($('endbar'),E.out(seg(t,16.9,17.12)));
+    const s=seg(t,17.1,17.32); place($('ends'),960,764,{o:s,extra:`translateY(${(1-E.out(s))*12}px)`}); }
+
+  // books
+  for(const k in BK) drawBook(BK[k],bookPose(k,t));
+};
+window.ready=(async()=>{await document.fonts.ready; await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r))); render(0); return true;})();
+</script>
+</body>
+</html>
