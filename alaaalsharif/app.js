@@ -9,6 +9,11 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
   del(k) { try { localStorage.removeItem(k); } catch {} }
 };
+const ss = {
+  get(k) { try { return sessionStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { sessionStorage.setItem(k, v); } catch {} },
+  del(k) { try { sessionStorage.removeItem(k); } catch {} }
+};
 const clone = o => JSON.parse(JSON.stringify(o));
 let DB = (() => { const d = store.get(KEY); return d && d.version === SEED.version ? d : clone(SEED); })();
 const save = () => store.set(KEY, DB);
@@ -112,7 +117,7 @@ function render() {
     if (a === 'exam') html = vExam(b + ':' + c);
     else if (a === 'result') html = vResult(b);
     else html = vApp(b, c);
-  } else if (a === 'admin') html = sessionStorage.getItem('alaa-admin') === '1' ? vAdmin(b) : vAdminGate();
+  } else if (a === 'admin') html = ss.get('alaa-admin') === '1' ? vAdmin(b) : vAdminGate();
   else html = vNotFound();
   $('#app').innerHTML = html;
   afterRender(a);
@@ -426,8 +431,8 @@ function vVideos(s) {
 // =====================================================================
 // EXAM
 // =====================================================================
-let EX = sessionStorage.getItem(EXAM) ? JSON.parse(sessionStorage.getItem(EXAM)) : null;
-const saveEx = () => { if (EX) sessionStorage.setItem(EXAM, JSON.stringify(EX)); else sessionStorage.removeItem(EXAM); };
+let EX = ss.get(EXAM) ? JSON.parse(ss.get(EXAM)) : null;
+const saveEx = () => { if (EX) ss.set(EXAM, JSON.stringify(EX)); else ss.del(EXAM); };
 
 function vExam(key) {
   const info = examInfo(key);
@@ -782,8 +787,8 @@ const A = window.A = {
   unblur() { EX.blur = false; saveEx(); render(); },
   leaveExam() { if (!EX.started || confirm('هل تريد الخروج؟ ستفقد إجاباتك في هذه المحاولة.')) { const info = examInfo(EX.key); EX = null; saveEx(); go(info?.lesson ? 'app/lesson/' + info.lesson : 'app/unit/' + info?.unit); } },
 
-  adminLogin() { if (($('#apin')?.value || '') === String(S().adminPin)) { sessionStorage.setItem('alaa-admin', '1'); UI.err = ''; render(); } else { UI.err = 'رمز غير صحيح'; render(); } },
-  adminLogout() { sessionStorage.removeItem('alaa-admin'); go(''); },
+  adminLogin() { if (($('#apin')?.value || '') === String(S().adminPin)) { ss.set('alaa-admin', '1'); UI.err = ''; render(); } else { UI.err = 'رمز غير صحيح'; render(); } },
+  adminLogout() { ss.del('alaa-admin'); go(''); },
   search(v) { UI.q = v; const r = route(); if (!['questions', 'students'].includes(r[1])) { go('admin/students'); } else render(); setTimeout(() => { const el = $('#asearch'); if (el) { el.focus(); el.setSelectionRange(v.length, v.length); } }, 0); },
   qf(k, v) { UI.qf[k] = v; if (k === 'grade') { UI.qf.unit = ''; UI.qf.lesson = ''; } if (k === 'unit') UI.qf.lesson = ''; render(); },
   newQ() { const l = UI.qf.lesson || DB.lessons.find(x => !UI.qf.unit || x.unit === UI.qf.unit)?.id; if (!l) return toast('أضف درساً أولاً من «الوحدات والدروس»'); UI.edit = { id: uid('q'), lesson: l, text: '', passage: '', o: ['', '', '', ''], c: 0, why: '' }; render(); },
